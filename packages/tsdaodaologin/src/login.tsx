@@ -28,12 +28,12 @@ class Login extends Component<any, LoginState> {
             return <div className="wk-login">
                 <div className="wk-login-content">
                     <div className="wk-login-content-phonelogin" style={{ "display": vm.loginType === LoginType.phone ? "block" : "none" }}>
-                        <div className="wk-login-content-logo">
+                       {/* <div className="wk-login-content-logo">
                             <img src={`${process.env.PUBLIC_URL}/logo.png`} alt="logo" />
-                        </div>
+                        </div> */}
                         <div className="wk-login-content-slogan">
-                            更愉快的与朋友交流
-                        </div>
+                            欢迎使用 {WKApp.config.appName}
+                        </div> 
                         <div className="wk-login-content-form">
                            {/* <input type="text" placeholder="手机号" onChange={(v) => {
                                 vm.username = v.target.value
@@ -70,7 +70,7 @@ class Login extends Component<any, LoginState> {
                                 <div className="wk-login-content-form-scanlogin" onClick={() => {
                                     vm.loginType = LoginType.qrcode
                                 }}>
-                                    扫码登录
+                                    扫描登录
                                 </div>
                             </div>
                         </div>
@@ -105,7 +105,7 @@ class Login extends Component<any, LoginState> {
                                     在手机上打开{WKApp.config.appName}
                                 </li>
                                 <li>
-                                    进入 <b>消息</b> &nbsp; &gt; &nbsp; <b>+</b>  &nbsp; &gt; &nbsp;<b>扫一扫</b>
+                                    找到&nbsp;<b>我的</b> &nbsp; &gt; &nbsp; <b>电脑端登录</b>  &nbsp; &gt; &nbsp;<b>扫描二维码登录</b>
                                 </li>
                                 <li>
                                     将你的手机摄像头对准上面二维码进行扫描
@@ -129,7 +129,7 @@ class Login extends Component<any, LoginState> {
                             <li>忘记密码</li>
                             <li>隐私政策</li>
                             <li>用户协议</li>
-                            <li> © 上海信必达网络科技有限公司</li>
+                            <li> © daodao</li>
                         </ul>
 
                     </div> */}
