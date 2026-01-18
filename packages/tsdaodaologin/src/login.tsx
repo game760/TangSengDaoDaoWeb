@@ -35,13 +35,13 @@ class Login extends Component<any, LoginState> {
                             更愉快的与朋友交流
                         </div>
                         <div className="wk-login-content-form">
-                            <input type="text" placeholder="手机号" onChange={(v) => {
+                           {/* <input type="text" placeholder="手机号" onChange={(v) => {
                                 vm.username = v.target.value
                             }}></input>
                             <input type="password" placeholder="密码" onChange={(v) => {
                                 vm.password = v.target.value
-                            }}></input>
-                            <div className="wk-login-content-form-buttons">
+                            }}></input> */}
+							{/* <div className="wk-login-content-form-buttons">
                                 <Button loading={vm.loginLoading} className="wk-login-content-form-ok" type='primary' theme='solid' onClick={async () => {
                                     if (!vm.username) {
                                         Toast.error("手机号不能为空！")
@@ -65,12 +65,12 @@ class Login extends Component<any, LoginState> {
                                         Toast.error(err.msg)
                                     })
                                 }}>登录</Button>
-                            </div>
+                            </div>  */}
                             <div className="wk-login-content-form-others">
                                 <div className="wk-login-content-form-scanlogin" onClick={() => {
                                     vm.loginType = LoginType.qrcode
                                 }}>
-                                    扫描登录
+                                    扫码登录
                                 </div>
                             </div>
                         </div>
@@ -118,14 +118,14 @@ class Login extends Component<any, LoginState> {
                         <div className="wk-login-footer-buttons">
                             <button onClick={() => {
                                 vm.loginType = LoginType.phone
-                            }}>使用手机号登录</button>
+                            }}>返回</button>
                         </div>
 
                     </div>
 
                     {/* <div className="wk-login-footer">
                         <ul>
-                            <li>注册唐僧叨叨</li>
+                            <li>注册叨叨</li>
                             <li>忘记密码</li>
                             <li>隐私政策</li>
                             <li>用户协议</li>
