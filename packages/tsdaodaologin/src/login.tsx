@@ -11,44 +11,41 @@ type LoginState = {
     loginStatus: string
     loginUUID: string
     getLoginUUIDLoading: boolean
-    scanner?: string  // 扫描者的uid
+    scanner?: string  // 掃描者的uid
     qrcode?: string
 }
 
 class Login extends Component<any, LoginState> {
-
-
-
-
     render() {
-
         return <Provider create={() => {
             return new LoginVM()
         }} render={(vm: LoginVM) => {
             return <div className="wk-login">
                 <div className="wk-login-content">
                     <div className="wk-login-content-phonelogin" style={{ "display": vm.loginType === LoginType.phone ? "block" : "none" }}>
-                       {/* <div className="wk-login-content-logo">
+                        {/* <div className="wk-login-content-logo">
                             <img src={`${process.env.PUBLIC_URL}/logo.png`} alt="logo" />
                         </div> */}
                         <div className="wk-login-content-slogan">
-                            欢迎使用 {WKApp.config.appName}
-                        </div> 
+                            歡迎使用 {WKApp.config.appName} <br/>
+							本軟體不對中國大陸地區提供服務，<br/>
+							港澳台及海外地區不在此限制範圍。
+                        </div>
                         <div className="wk-login-content-form">
-                           {/* <input type="text" placeholder="手机号" onChange={(v) => {
+                           {/* <input type="text" placeholder="手機號" onChange={(v) => {
                                 vm.username = v.target.value
                             }}></input>
-                            <input type="password" placeholder="密码" onChange={(v) => {
+                            <input type="password" placeholder="密碼" onChange={(v) => {
                                 vm.password = v.target.value
                             }}></input> */}
 							{/* <div className="wk-login-content-form-buttons">
                                 <Button loading={vm.loginLoading} className="wk-login-content-form-ok" type='primary' theme='solid' onClick={async () => {
                                     if (!vm.username) {
-                                        Toast.error("手机号不能为空！")
+                                        Toast.error("手機號不能為空！")
                                         return
                                     }
                                     if (!vm.password) {
-                                        Toast.error("密码不能为空！")
+                                        Toast.error("密碼不能為空！")
                                         return
                                     }
                                     let fullPhone = vm.username
@@ -64,13 +61,13 @@ class Login extends Component<any, LoginState> {
                                     vm.requestLoginWithUsernameAndPwd(fullPhone, vm.password).catch((err) => {
                                         Toast.error(err.msg)
                                     })
-                                }}>登录</Button>
+                                }}>登錄</Button>
                             </div>  */}
                             <div className="wk-login-content-form-others">
                                 <div className="wk-login-content-form-scanlogin" onClick={() => {
                                     vm.loginType = LoginType.qrcode
                                 }}>
-                                    扫描登录
+                                    掃描登錄
                                 </div>
                             </div>
                         </div>
@@ -79,7 +76,7 @@ class Login extends Component<any, LoginState> {
                         <Spin size="large" spinning={vm.qrcodeLoading}>
                             <div className="wk-login-content-scanlogin-qrcode">
                                 {
-                                    vm.qrcodeLoading || !vm.qrcode ? undefined : <QRCode value={vm.qrcode} size={280} fgColor={WKApp.config.themeColor}></QRCode>
+                                    vm.qrcodeLoading || !vm.qrcode ? undefined : <QRCode value={vm.qrcode} size={150} fgColor={WKApp.config.themeColor}></QRCode>
                                 }
                                 {
                                     <div className={classNames("wk-login-content-scanlogin-qrcode-avatar", vm.showAvatar() ? "wk-login-content-scanlogin-qrcode-avatar-show" : undefined)}>
@@ -88,7 +85,7 @@ class Login extends Component<any, LoginState> {
                                 }
                                 {
                                     !vm.autoRefresh ? <div className="wk-login-content-scanlogin-qrcode-expire">
-                                        <p>二维码已失效，点击刷新</p>
+                                        <p>二維碼已失效，點擊刷新</p>
                                         <img onClick={() => {
                                             vm.reStartAdvance()
                                         }} src={require("./assets/refresh.png")}></img>
@@ -97,21 +94,21 @@ class Login extends Component<any, LoginState> {
                             </div>
                         </Spin>
                         <div className="wk-login-content-scanlogin-qrcode-title">
-                            <h3>使用手机{WKApp.config.appName}扫码登录</h3>
+                            <h3>使用手機{WKApp.config.appName}掃描登錄</h3>
                         </div>
                         <div className="wk-login-content-scanlogin-qrcode-desc">
                             <ul>
                                 <li>
-                                    在手机上打开{WKApp.config.appName}
+                                    在手機上打開{WKApp.config.appName}
                                 </li>
                                 <li>
-                                    找到&nbsp;<b>我的</b> &nbsp; &gt; &nbsp; <b>电脑端登录</b>  &nbsp; &gt; &nbsp;<b>扫描二维码登录</b>
+                                    找到&nbsp;<b>我的</b> &nbsp; &gt; &nbsp; <b>電腦端登錄</b>  &nbsp; &gt; &nbsp;<b>掃描二維碼登錄</b>
                                 </li>
                                 <li>
-                                    将你的手机摄像头对准上面二维码进行扫描
+                                    將你的手機攝像頭對準上面二維碼進行掃描
                                 </li>
                                 <li>
-                                    在手机上确认登录
+                                    在手機上確認登錄
                                 </li>
                             </ul>
                         </div>
@@ -123,24 +120,36 @@ class Login extends Component<any, LoginState> {
 
                     </div>
 
-                    {/* <div className="wk-login-footer">
+                     <div className="wk-login-footer">
                         <ul>
-                            <li>注册叨叨</li>
-                            <li>忘记密码</li>
-                            <li>隐私政策</li>
-                            <li>用户协议</li>
-                            <li> © daodao</li>
+                           <li style={{ marginTop: '0' }}>
+							<a 
+							href="https://open.queryip.top/privacy_policy/" 
+							target="_blank" 
+							rel="noopener noreferrer"
+							className="link-item"
+							>
+							隱私政策
+							</a>
+							</li>
+							<li style={{ marginTop: '0' }}>
+							<a 
+							href="https://open.queryip.top/user_agreement/" 
+							target="_blank" 
+							rel="noopener noreferrer"
+							className="link-item"
+							>
+							使用協議
+							</a>
+							</li>
                         </ul>
-
-                    </div> */}
-                </div>
-
-
+                    </div> 
+               
+			   </div>
             </div>
         }}>
-
         </Provider>
     }
 }
 
-export default Login
+export default Login 

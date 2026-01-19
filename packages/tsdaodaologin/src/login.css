@@ -138,8 +138,8 @@
 }
 
 .wk-login-content-scanlogin-qrcode {
-    width: 280px;
-    height: 280px;
+    width: 120px;
+    height: 120px;
     position: relative;
 
     opacity: 0;
